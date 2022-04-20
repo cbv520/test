@@ -16,10 +16,12 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
+    "checkJs": false,
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "jsx": "react",
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
