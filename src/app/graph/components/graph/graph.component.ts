@@ -18,12 +18,25 @@ export class GraphComponent implements OnInit {
 
   style: cytoscape.Stylesheet[] = [
     {
+      selector: '[left]',
+      css: {
+        'text-halign': 'left'
+      }
+    },
+    {
+      selector: '[right]',
+      css: {
+        'text-halign': 'right'
+      }
+    },
+    {
       selector: 'node',
       css: {
         'content': 'data(name)',
         'text-valign': 'center',
-        'text-halign': 'center',
-        'shape': 'rectangle'
+        'shape': 'ellipse',
+        'width': 15,
+        'height': 15,
       }
     },
     {
@@ -35,6 +48,8 @@ export class GraphComponent implements OnInit {
         "padding-top": "0",
         'text-valign': 'top',
         'text-halign': 'center',
+        'shape': 'roundrectangle',
+        'border-width': 3
       }
     },
     {
@@ -78,12 +93,12 @@ export class GraphComponent implements OnInit {
     g.forEach(s => {
       x.push({data:{id:s.name, name: s.name, isParent: true}})
       s.inputs?.forEach(i => {
-        x.push({ data: { id: s.name + 'i' + i , parent: s.name , weight: dd, name: i, isParent: false}, position: { y: h, x: dd } })
+        x.push({ data: { id: s.name + 'i' + i , parent: s.name , weight: dd, name: i, isParent: false, right: true}, position: { y: h, x: dd } })
         h+=i.length*pp;
       })
       h+=70;
       s.outputs?.forEach(i => {
-        x.push({ data: { id: s.name + 'o' + i , parent: s.name , weight: dd, name: i, isParent: false }, position: { y: j, x: dd+50 } })
+        x.push({ data: { id: s.name + 'o' + i , parent: s.name , weight: dd, name: i, isParent: false, left: true }, position: { y: j, x: dd+50 } })
         j+=i.length*pp;
       })
       j+=70;
