@@ -65,7 +65,7 @@ export class GraphComponent implements OnInit {
         'height': '1',
         'width': '1',
         'content': '',
-        'background-color': '#28a4fc'
+        'background-opacity': 0
       }
     },
     {
@@ -113,7 +113,7 @@ export class GraphComponent implements OnInit {
     var h = tt[dd] ;
     var jj = 60;
     var j = tt[dd] ;
-    var pp = 80;
+    var pp = 40;
     g.forEach(s => {
       x.push(({data:{id:s.name+'parentOverlay', name: '', parentOverlay: true}}))
       x.push({data:{id:s.name, name: s.name, parent: s.name+'parentOverlay', parentBg: true}})
@@ -121,21 +121,17 @@ export class GraphComponent implements OnInit {
       h+=pp;
       s.inputs?.forEach(i => {
         x.push({ data: { id: s.name + 'i' + i ,   weight: dd, name: i, isParent: false, right: true, parent: s.name+'parentOverlay'}, position: { y: h, x: dd } })
-        x.push({ data: { id: s.name + 'ii' + i , parent: s.name , weight: dd, isParent: false,  invisible: true}, position: { y: h, x: dd } })
-        h+=i.length*pp;
+        h+=pp;
       })
       x.push({ data: { id: s.name + 'c2', parent: s.name , weight: dd, isParent: false,  invisible: true}, position: { y: h, x: dd } })
-      //h+=pp;
-      //x.push({ data: { id: s.name + 'c3', parent: s.name , weight: dd, isParent: false,  invisible: true}, position: { y: h, x: dd } })
+      x.push({ data: { id: s.name + 'c3', parent: s.name , weight: dd, isParent: false,  invisible: true}, position: { y: j, x: dd+50 } })
       j+=pp;
       s.outputs?.forEach(i => {
         x.push({ data: { id: s.name + 'o' + i ,  weight: dd, name: i, isParent: false, left: true , parent: s.name+'parentOverlay'}, position: { y: j, x: dd+50 } })
-        x.push({ data: { id: s.name + 'oo' + i , parent: s.name , weight: dd, isParent: false,   invisible: true }, position: { y: j, x: dd+50 } })
-        j+=i.length*pp;
+        j+=pp;
       })
-      //Sx.push({ data: { id: s.name + 'c4', parent: s.name , weight: dd, isParent: false,   invisible: true }, position: { y: j, x: dd+50 } })
+      x.push({ data: { id: s.name + 'c4', parent: s.name , weight: dd, isParent: false,   invisible: true }, position: { y: j, x: dd+50 } })
       j+=pp;
-      //j+=70;
       h=j=Math.max(h,j)
     })
     
