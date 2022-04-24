@@ -1,0 +1,36 @@
+.root {
+    height: 100%;
+    position: relative;
+}
+
+.input {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: 10px;
+    bottom: 20%;
+    resize: none;
+}
+
+.upload {
+    position: absolute;
+    right: 25px;
+    bottom: calc(20% - 60px);
+    color: white;
+    background-color: #0f65d6;
+    padding: 8px;
+    border-radius: 5px;
+    user-select: none;
+}
+
+.options {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: calc(80% + 10px);
+    bottom: 10px;
+}
+
+#font-size {
+    width: 50px;
+}

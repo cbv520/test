@@ -1,0 +1,17 @@
+.root {
+    position: relative;
+    padding: 10px;
+}
+
+p {
+    &.name {
+        font-size: large;
+        font-weight: bolder;
+    }
+}
+
+.close {
+    position: absolute;
+    right: 10px;
+    top: 0;
+}

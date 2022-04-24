@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ServiceDescriptionService } from './service-description/service/service-description.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'portgraph';
+
+  public showQuery: boolean = true;
+
+  constructor(public serviceDescription: ServiceDescriptionService) {
+
+  }
+
+  toggleQueryEditor() {
+    this.showQuery = !this.showQuery
+  }
 }

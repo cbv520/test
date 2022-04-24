@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as cytoscape from 'cytoscape';
 import { Service } from 'src/app/service';
+import { ServiceDescriptionService } from 'src/app/service-description/service/service-description.service';
 import { GraphService } from '../../service/graph.service';
 
 @Component({
@@ -71,7 +72,7 @@ export class GraphComponent implements OnInit {
     {
       selector: 'edge',
       css: {
-        'curve-style': 'straight',
+        'curve-style': 'bezier',
         'target-arrow-shape': 'triangle',
       }
     },
@@ -85,7 +86,7 @@ export class GraphComponent implements OnInit {
     }
   ];
 
-  constructor(graphService: GraphService) { }
+  constructor(public graphService: GraphService, public serviceDescription: ServiceDescriptionService) { }
 
   nodes() {
     return this.nn(this.g, [], 0,  {});
@@ -102,12 +103,9 @@ export class GraphComponent implements OnInit {
   }
 
   nn(g: Service[], x: any[], dd: number, tt: {[d:number]:number}) {
-    console.log((tt))
     if (!tt[dd]) {
-      console.log("dd")
       tt[dd] = 0
     } else {
-      console.log("ff")
     }
     var hh = 60;
     var h = tt[dd] ;
@@ -143,10 +141,16 @@ export class GraphComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!this.graphService.cy) {
+      this.init()
+    } else {
+      this.graphService.cy.mount(document.getElementById('graph-container'));
+    }
+    
+  }
 
-    console.log(this.nodes());
-
-    var cy = cytoscape({
+  init() {
+    this.graphService.cy = cytoscape({
       container: document.getElementById('graph-container'),
     
       boxSelectionEnabled: false,
@@ -164,16 +168,14 @@ export class GraphComponent implements OnInit {
       }
     });
 
-    cy.on('mouseover', 'node', function(event) {
-      var node = event.target.data();
-      if (!node.parent) {
-        console.log(node)
-      }
-  });
+
+    this.graphService.cy.on('click', 'node', (event:any) => {
+    var node = event.target.data();
+      this.serviceDescription.update(node);
+    });
   }
 
   cdd(a: { data: { weight: number; }; },b: { data: { weight: number; }; }):any{
-    console.log("preeee");
     return a.data.weight - b.data.weight;
   }
 }

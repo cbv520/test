@@ -6,6 +6,8 @@ import * as cytoscape from 'cytoscape';
 })
 export class GraphService {
 
+  public cy: any
+
   constructor() { 
     console.log("hello");
 
