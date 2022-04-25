@@ -1,8 +1,11 @@
 <div class="root">
     <textarea id="input" [ngStyle]="{'font-size': fontSize+'px'}" [(ngModel)]="queryService.text"></textarea>
+    <div class="loader-frame"  *ngIf="loading">
+        <div class="loader"></div>
+    </div>
     <div class="options">
         <label for="font-size">Font size </label>
         <input id="font-size" type="number" [(ngModel)]="fontSize">
     </div>
-    <p class="upload button">Upload Query</p>
+    <p class="upload button" (click)="submit()">Upload Query</p>
 </div>  

@@ -9,6 +9,7 @@ import { QueryService } from '../../service/query.service';
 export class QueryComponent implements OnInit {
 
   public fontSize = 20;
+  public loading = false;
 
   constructor(public queryService: QueryService) { }
 
@@ -26,6 +27,13 @@ export class QueryComponent implements OnInit {
           target.selectionEnd = start + 4;
       }
     });
+  }
+
+  async submit() {
+    this.loading = true;
+    const delay = (ms:number) => new Promise(res => setTimeout(res, ms));
+    await delay(2000);
+    this.loading = false;
   }
 
 }
