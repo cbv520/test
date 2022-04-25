@@ -1,12 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { G2Component } from './g2/components/g2/g2.component';
-import { GraphComponent } from './graph/components/graph/graph.component';
+import { CatalogComponent } from './catalog/component/catalog/catalog.component';
+import { SettingsComponent } from './settings/component/settings/settings.component';
+import { MainComponent } from './views/main/main.component';
 
 const routes: Routes = [
   {
     path: "",
-    component: GraphComponent
+    component: MainComponent
+  },
+  {
+    path: "catalog",
+    component: CatalogComponent
+  },
+  {
+    path: "settings",
+    component: SettingsComponent
   }
 ];
 

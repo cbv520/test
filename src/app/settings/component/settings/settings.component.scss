@@ -1,0 +1,21 @@
+.root {
+    padding: 30px;
+}
+
+form {
+    display: table;
+}
+
+p {
+    display: table-row;  
+}
+
+label {
+    display: table-cell; 
+    padding: 10px 30px 30px 0;
+    font-weight: bold;
+}
+
+input, select {
+    display: table-cell; 
+}

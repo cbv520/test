@@ -1,6 +1,6 @@
 <div class="root">
-    <p class="name">{{serviceDescription.service.name}}</p>
-    <p>ss</p>
+    <h2 class="title">{{serviceDescription.service.name}}</h2>
+    <p class="onlineStatus" [ngStyle]="{'color': graphService.onlineStatus[serviceDescription.service.name] ? 'green' : 'grey' }">{{graphService.onlineStatus[serviceDescription.service.name] ? "online" : "offline"}}</p>
     <div class="close button" (click)="close()">&#x2715;</div>
 </div>
 

@@ -1,0 +1,16 @@
+<div class="root">
+    <form>      
+        <p>
+            <label for="server">Server</label>
+            <input id="server" type="text" value="{{settings.map['server']}}" (change)="update('server', $event)">
+        </p>
+        <p>
+            <label for="mode">Mode</label>
+            <select required id="mode" (change)="update('mode', $event)">
+                <option [value]="'none'">None</option>
+                <option [value]="'docker'">Docker</option>
+                <option [value]="'kubernetes'" selected>Kubernetes</option>
+            </select>
+        </p>
+    </form>
+</div>

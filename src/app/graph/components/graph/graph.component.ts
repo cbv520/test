@@ -44,7 +44,7 @@ export class GraphComponent implements OnInit {
       }
     },
     {
-      selector: '[parentBg]',
+      selector: '[bgParent]',
       css: {
         
         'content': 'data(name)',
@@ -70,20 +70,20 @@ export class GraphComponent implements OnInit {
       }
     },
     {
+      selector: '[mainParent]',
+      css: {
+        'z-compound-depth': 'top',
+        'background-opacity': 0,
+        'border-width': 0
+      }
+    },
+    {
       selector: 'edge',
       css: {
         'curve-style': 'bezier',
         'target-arrow-shape': 'triangle',
       }
     },
-    {
-      selector: '[parentOverlay]',
-      css: {
-        'z-compound-depth': 'top',
-        'background-opacity': 0,
-        'border-width': 0
-      }
-    }
   ];
 
   constructor(public graphService: GraphService, public serviceDescription: ServiceDescriptionService) { }
@@ -113,22 +113,22 @@ export class GraphComponent implements OnInit {
     var j = tt[dd] ;
     var pp = 40;
     g.forEach(s => {
-      x.push(({data:{id:s.name+'parentOverlay', name: '', parentOverlay: true}}))
-      x.push({data:{id:s.name, name: s.name, parent: s.name+'parentOverlay', parentBg: true}})
-      x.push({ data: { id: s.name + 'c1', parent: s.name , weight: dd, isParent: false,  invisible: true}, position: { y: h, x: dd } })
+      x.push(({data:{id:s.name+'-mainParent', mainParent: true}}))
+      x.push({data:{id:s.name+'-bgParent', name: s.name, parent: s.name+'-mainParent', bgParent: true}})
+      x.push({ data: { id: s.name + 'c1', parent: s.name+'-bgParent' , invisible: true}, position: { y: h, x: dd } })
       h+=pp;
       s.inputs?.forEach(i => {
-        x.push({ data: { id: s.name + 'i' + i ,   weight: dd, name: i, isParent: false, right: true, parent: s.name+'parentOverlay'}, position: { y: h, x: dd } })
+        x.push({ data: { id: s.name + 'i' + i ,  name: i, right: true, parent: s.name+'-mainParent'}, position: { y: h, x: dd } })
         h+=pp;
       })
-      x.push({ data: { id: s.name + 'c2', parent: s.name , weight: dd, isParent: false,  invisible: true}, position: { y: h, x: dd } })
-      x.push({ data: { id: s.name + 'c3', parent: s.name , weight: dd, isParent: false,  invisible: true}, position: { y: j, x: dd+50 } })
+      x.push({ data: { id: s.name + 'c2', parent: s.name+'-bgParent' , invisible: true}, position: { y: h, x: dd } })
+      x.push({ data: { id: s.name + 'c3', parent: s.name+'-bgParent' , invisible: true}, position: { y: j, x: dd+50 } })
       j+=pp;
       s.outputs?.forEach(i => {
-        x.push({ data: { id: s.name + 'o' + i ,  weight: dd, name: i, isParent: false, left: true , parent: s.name+'parentOverlay'}, position: { y: j, x: dd+50 } })
+        x.push({ data: { id: s.name + 'o' + i ,  name: i, left: true , parent: s.name+'-mainParent'}, position: { y: j, x: dd+50 } })
         j+=pp;
       })
-      x.push({ data: { id: s.name + 'c4', parent: s.name , weight: dd, isParent: false,   invisible: true }, position: { y: j, x: dd+50 } })
+      x.push({ data: { id: s.name + 'c4', parent: s.name+'-bgParent' ,  invisible: true }, position: { y: j, x: dd+50 } })
       j+=pp;
       h=j=Math.max(h,j)
     })
@@ -173,9 +173,5 @@ export class GraphComponent implements OnInit {
     var node = event.target.data();
       this.serviceDescription.update(node);
     });
-  }
-
-  cdd(a: { data: { weight: number; }; },b: { data: { weight: number; }; }):any{
-    return a.data.weight - b.data.weight;
   }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ServiceDescriptionService } from './service-description/service/service-description.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +9,21 @@ import { ServiceDescriptionService } from './service-description/service/service
 export class AppComponent {
   title = 'portgraph';
 
-  public showQuery: boolean = true;
+  public pageTitles = [
+    "Catalog",
+    "Settings"
+  ]
 
-  constructor(public serviceDescription: ServiceDescriptionService) {
-
+  routes: {[pageTitle: string]: string} = {
+    "home": "/",
+    "Catalog": "/catalog",
+    "Settings": "/settings"
   }
 
-  toggleQueryEditor() {
-    this.showQuery = !this.showQuery
+  constructor(private router: Router) {
+  }
+
+  navigate(page: string) {
+    this.router.navigate([this.routes[page]])
   }
 }

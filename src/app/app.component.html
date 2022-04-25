@@ -1,41 +1,11 @@
 <div class="display">
     <div class="header" style="height:99px">
-        <h1>Graph Viewer</h1>
-    </div>
-    <div style="height:calc(100% - 100px);" *ngIf="!serviceDescription.show && !showQuery">
-        <div class="graph" style="height: 100%;">
-            <p class="queryToggle button" (click)="toggleQueryEditor()">Toggle Query Editor</p>
-            <router-outlet></router-outlet>
+        <div fxLayout="row" fxLayoutAlign="start center" >
+            <h1 class="button" style="margin-right: 20px;" (click)="navigate('home')">Graph Viewer</h1>
+            <div class="button" *ngFor="let pageTitle of pageTitles" (click)="navigate(pageTitle)">{{pageTitle}}</div>
         </div>
     </div>
-    <div style="height:calc(100% - 100px);"  fxLayout="row" *ngIf="serviceDescription.show && !showQuery">
-        <div  class="service-description" fxFlex="20">
-            <app-service-desccription></app-service-desccription>
-        </div>
-        <div  class="graph" style="height: 100%;" fxFlex="80">
-            <p class="queryToggle button" (click)="toggleQueryEditor()">Toggle Query Editor</p>
-            <router-outlet></router-outlet>
-        </div>
-    </div>
-    <div style="height:calc(100% - 100px);"  fxLayout="row" *ngIf="!serviceDescription.show && showQuery">
-        <div  class="graph" style="height: 100%;" fxFlex="70">
-            <p class="queryToggle button" (click)="toggleQueryEditor()">Toggle Query Editor</p>
-            <router-outlet></router-outlet>
-        </div>
-        <div  class="query" fxFlex="30">
-            <app-query></app-query>
-        </div>
-    </div>
-    <div style="height:calc(100% - 100px);"  fxLayout="row" *ngIf="serviceDescription.show && showQuery">
-        <div  class="service-description" fxFlex="20">
-            <app-service-desccription></app-service-desccription>
-        </div>
-        <div  class="graph" style="height: 100%;" fxFlex="50">
-            <p class="queryToggle button" (click)="toggleQueryEditor()">Toggle Query Editor</p>
-            <router-outlet></router-outlet>
-        </div>
-        <div  class="query" fxFlex="30">
-            <app-query></app-query>
-        </div>
+    <div style="height:calc(100% - 100px); width: 100%;">
+        <router-outlet></router-outlet>
     </div>
 </div>

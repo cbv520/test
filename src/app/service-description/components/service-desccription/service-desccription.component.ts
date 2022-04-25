@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GraphService } from 'src/app/graph/service/graph.service';
 import { ServiceDescriptionService } from '../../service/service-description.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ServiceDescriptionService } from '../../service/service-description.ser
 })
 export class ServiceDesccriptionComponent implements OnInit {
 
-  constructor(public serviceDescription: ServiceDescriptionService) { }
+  constructor(public serviceDescription: ServiceDescriptionService, public graphService: GraphService) { }
 
   ngOnInit(): void {
   }

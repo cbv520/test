@@ -1,15 +1,11 @@
-.root {
-    height: 100%;
-    position: relative;
-}
-
-.input {
+#input {
     position: absolute;
     left: 10px;
     right: 10px;
     top: 10px;
     bottom: 20%;
     resize: none;
+    font-family: monospace;
 }
 
 .upload {
@@ -18,9 +14,6 @@
     bottom: calc(20% - 60px);
     color: white;
     background-color: #0f65d6;
-    padding: 8px;
-    border-radius: 5px;
-    user-select: none;
 }
 
 .options {

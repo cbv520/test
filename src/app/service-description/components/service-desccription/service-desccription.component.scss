@@ -1,13 +1,14 @@
 .root {
-    position: relative;
     padding: 10px;
 }
 
-p {
-    &.name {
-        font-size: large;
-        font-weight: bolder;
-    }
+.title {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.onlineStatus {
+    margin-top: 0;
 }
 
 .close {

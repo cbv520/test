@@ -1,0 +1,12 @@
+<div class="root">
+    <div  class="service-description" fxFlex="20" *ngIf="serviceDescription.show">
+        <app-service-desccription></app-service-desccription>
+    </div>
+    <div  class="graph" style="height: 100%;" fxFlex="{{100 + (serviceDescription.show ? -20 : 0) + (showQuery ? -30 : 0)}}">
+        <p class="queryToggle button" (click)="toggleQueryEditor()">Toggle Query Editor</p>
+        <app-graph></app-graph>
+    </div>
+    <div  class="query" fxFlex="30" *ngIf="showQuery">
+        <app-query></app-query>
+    </div>
+</div>

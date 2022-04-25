@@ -1,0 +1,21 @@
+.service-description {
+    z-index: 800;
+    box-shadow:  60px 0px 50px -90px #000000;
+}
+
+.query {
+    z-index: 800;
+    box-shadow: -60px 0px 50px -90px #000000
+}
+
+.graph {
+    z-index: 500;
+    position: relative;
+}
+
+.queryToggle {
+    position: absolute;
+    z-index: 700;
+    top: 0px;
+    right: 15px;
+}

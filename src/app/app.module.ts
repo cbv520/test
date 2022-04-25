@@ -9,6 +9,9 @@ import { ServiceDesccriptionComponent } from './service-description/components/s
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { QueryComponent } from './query/components/query/query.component';
 import { FormsModule } from '@angular/forms';
+import { MainComponent } from './views/main/main.component';
+import { SettingsComponent } from './settings/component/settings/settings.component';
+import { CatalogComponent } from './catalog/component/catalog/catalog.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { FormsModule } from '@angular/forms';
     GraphComponent,
     G2Component,
     ServiceDesccriptionComponent,
-    QueryComponent
+    QueryComponent,
+    MainComponent,
+    SettingsComponent,
+    CatalogComponent
   ],
   imports: [
     BrowserModule,

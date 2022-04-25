@@ -10,7 +10,8 @@ export class ServiceDescriptionService {
   update(node: any) {
     this.show = true;
     this.service = {
-      name: node.id
+      name: node.id,
+      isOnline: true
     }
   }
 
