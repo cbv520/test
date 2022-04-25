@@ -2,7 +2,7 @@
     <div class="header" style="height:99px">
         <div fxLayout="row" fxLayoutAlign="start center" >
             <h1 class="button" style="margin-right: 20px;" (click)="navigate('home')">Graph Viewer</h1>
-            <div class="button" *ngFor="let pageTitle of pageTitles" (click)="navigate(pageTitle)">{{pageTitle}}</div>
+            <div class="navigation button" *ngFor="let pageTitle of pageTitles" (click)="navigate(pageTitle)" [ngStyle]="{'text-decoration': (routes[pageTitle] === currentPath) ? 'underline 2px' : 'none'}">{{pageTitle}}</div>
         </div>
     </div>
     <div style="height:calc(100% - 100px); width: 100%;">

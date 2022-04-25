@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'portgraph';
 
+  public currentPath
+
   public pageTitles = [
     "Catalog",
     "Settings"
@@ -21,9 +23,11 @@ export class AppComponent {
   }
 
   constructor(private router: Router) {
+    this.currentPath = window.location.pathname
   }
 
   navigate(page: string) {
+    this.currentPath = this.routes[page];
     this.router.navigate([this.routes[page]])
   }
 }
