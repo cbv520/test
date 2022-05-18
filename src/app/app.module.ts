@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { MainComponent } from './views/main/main.component';
 import { SettingsComponent } from './settings/component/settings/settings.component';
 import { CatalogComponent } from './catalog/component/catalog/catalog.component';
+import { GraphSelectComponent } from './graph/components/graph-select/graph-select.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CatalogComponent } from './catalog/component/catalog/catalog.component'
     QueryComponent,
     MainComponent,
     SettingsComponent,
-    CatalogComponent
+    CatalogComponent,
+    GraphSelectComponent
   ],
   imports: [
     BrowserModule,

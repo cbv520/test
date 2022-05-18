@@ -9,6 +9,9 @@
     width: 100%;
     position: relative;
     background-color: white;
+    > * {
+        margin: 0;
+    }
 }
 
 .button {
@@ -24,4 +27,8 @@
         opacity: 0.7;
         background-color: #808080;
     }
+}
+
+.navigation {
+    text-underline-offset: 5px;
 }
